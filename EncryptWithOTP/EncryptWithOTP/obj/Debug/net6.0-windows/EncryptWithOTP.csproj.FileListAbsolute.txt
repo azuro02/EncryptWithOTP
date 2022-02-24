@@ -1,0 +1,63 @@
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.exe
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.deps.json
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.runtimeconfig.json
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.dll
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\ref\EncryptWithOTP.dll
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.pdb
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.csproj.AssemblyReference.cache
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP_MarkupCompile.cache
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP_MarkupCompile.lref
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.g.resources
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.AssemblyInfoInputs.cache
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.AssemblyInfo.cs
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.csproj.CoreCompileInputs.cache
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.dll
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\ref\EncryptWithOTP.dll
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.pdb
+C:\Users\david\source\repos\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.genruntimeconfig.cache
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.exe
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.deps.json
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.runtimeconfig.json
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.dll
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\ref\EncryptWithOTP.dll
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.pdb
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.csproj.AssemblyReference.cache
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\App.g.cs
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP_MarkupCompile.cache
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP_MarkupCompile.lref
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\MainWindow.baml
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.g.resources
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.GeneratedMSBuildEditorConfig.editorconfig
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.AssemblyInfoInputs.cache
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.AssemblyInfo.cs
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.csproj.CoreCompileInputs.cache
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.dll
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\ref\EncryptWithOTP.dll
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.pdb
+D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.genruntimeconfig.cache
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.exe
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.deps.json
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.runtimeconfig.json
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.dll
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\ref\EncryptWithOTP.dll
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\EncryptWithOTP.pdb
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.csproj.AssemblyReference.cache
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\MainWindow.g.cs
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\App.g.cs
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP_MarkupCompile.cache
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP_MarkupCompile.lref
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\MainWindow.baml
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.g.resources
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.AssemblyInfoInputs.cache
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.AssemblyInfo.cs
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.csproj.CoreCompileInputs.cache
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.dll
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\ref\EncryptWithOTP.dll
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.pdb
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.genruntimeconfig.cache
