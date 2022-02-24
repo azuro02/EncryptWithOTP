@@ -5,8 +5,8 @@ using System.IO;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
+using Microsoft.WindowsAPICodePack.Dialogs;
 
-//Jetzt auf GitHub!
 namespace EncryptWithOTP
 {
     public partial class MainWindow : Window
@@ -209,7 +209,7 @@ namespace EncryptWithOTP
                 FilePathLbl.Content = path;
                 if (Directory.Exists(path))
                 {
-                    count = getCount(path);
+                    count = GetCount(path);
                 }
             }
 
@@ -238,7 +238,7 @@ namespace EncryptWithOTP
                 KeyPathLbl.Content = keyPath;
                 if (Directory.Exists(keyPath))
                 {
-                    count = getCount(keyPath);
+                    count = GetCount(keyPath);
                 }
             }
 
@@ -283,7 +283,7 @@ namespace EncryptWithOTP
             }
         }
 
-        long GetDirectorySize(string p)
+        static long GetDirectorySize(string p)
         {
             //Definitly not stolen 
 
@@ -328,13 +328,13 @@ namespace EncryptWithOTP
             KeyPathLbl.Content = "";
         }
 
-        int getCount(string path)
+        int GetCount(string path)
         {
             DirectoryInfo dirInfo = new DirectoryInfo(path);
             count += dirInfo.GetFiles().Length;
             foreach (var dir in dirInfo.GetDirectories())
             {
-                getCount(dir.FullName.ToString());
+                GetCount(dir.FullName.ToString());
             }
             return count;
         }
@@ -363,17 +363,70 @@ namespace EncryptWithOTP
 
         private void FileBtn_Click(object sender, RoutedEventArgs e)
         {
+            CommonOpenFileDialog ofd = new CommonOpenFileDialog();
+            ofd.IsFolderPicker = true;
+            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                path = ofd.FileName;
 
+                FilePanel.Visibility = Visibility.Visible;
+                FilePathLbl.Content = path;
+                if (Directory.Exists(path))
+                {
+                    count = GetCount(path);
+                }
+
+                EncryptBtn.IsEnabled = true;
+                EncryptBtn.Foreground = (Brush?)(new BrushConverter().ConvertFrom("#F5F2E7"));
+                fileHere = true;
+
+                if (keyHere)
+                {
+                    DecryptBtn.IsEnabled = true;
+                    DecryptBtn.Foreground = (Brush?)(new BrushConverter().ConvertFrom("#F5F2E7"));
+
+                    EncryptBtn.IsEnabled = false;
+                    EncryptBtn.Foreground = Brushes.Black;
+                }
+            }
         }
 
         private void KeyBtn_Click(object sender, RoutedEventArgs e)
         {
+            CommonOpenFileDialog ofd = new CommonOpenFileDialog();
+            ofd.IsFolderPicker = true;
+            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                keyPath = ofd.FileName;
 
+                KeyPanel.Visibility = Visibility.Visible;
+                KeyPathLbl.Content = keyPath;
+                if (Directory.Exists(keyPath))
+                {
+                    count = GetCount(keyPath);
+                }
+
+                if (fileHere)
+                {
+                    DecryptBtn.IsEnabled = true;
+                    DecryptBtn.Foreground = (Brush?)(new BrushConverter().ConvertFrom("#F5F2E7"));
+
+                    EncryptBtn.IsEnabled = false;
+                    EncryptBtn.Foreground = Brushes.Black;
+                }
+
+                keyHere = true;
+            }
         }
 
         private void KeyLocationBtn_Click(object sender, RoutedEventArgs e)
         {
-            keyDestinPath = @"D:\Schnellzugriff\Desktop\MyKeys";
+            CommonOpenFileDialog ofd = new CommonOpenFileDialog();
+            ofd.IsFolderPicker = true;
+            if(ofd.ShowDialog() == CommonFileDialogResult.Ok)
+            {
+                keyDestinPath = ofd.FileName;
+            }
         }
     }
 }

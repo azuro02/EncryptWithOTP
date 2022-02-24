@@ -1,17 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
-using System.Collections;
 using System.Windows;
 
 namespace EncryptWithOTP
 {
     class Read
     {
-        public List<byte[]> result {get; set; }
+        public List<byte[]> Result {get; set; }
 
         int folderIndex;
         bool firstIteration = true;
@@ -20,7 +16,7 @@ namespace EncryptWithOTP
 
         public Read(string path)
         {
-            result = new List<byte[]>();
+            Result = new List<byte[]>();
             FailedPaths = new List<string>();
 
             string[] help = path.Split('\\');
@@ -33,16 +29,18 @@ namespace EncryptWithOTP
 
             OTPvalues pair = OneTimePad.Encrypt(bytes);//Encrypt
 
-            Write.WriteFile(pair.key, keyDirPath + @"\" + name + "_key.txt");//Save Keys
+            Write.WriteFile(pair.Key, keyDirPath + @"\" + name + "_key.txt");//Save Keys
+
+            pair.Key = null;
 
             try
             {
-                Write.WriteFile(pair.cipherText, path); //create new ciphered File
+                Write.WriteFile(pair.CipherText, path); //create new ciphered File
             }
             catch
             {
                 FailedPaths.Add(path);
-                Write.WriteNewFile(pair.cipherText, path);
+                Write.WriteNewFile(pair.CipherText, path);
             }
           
             return bytes;
@@ -119,19 +117,19 @@ namespace EncryptWithOTP
             }
         }
 
-        public  List<byte[]> ReadDirectory(string path)
+        public List<byte[]> ReadDirectory(string path)
         {
             DirectoryInfo dirInfo = new DirectoryInfo(path);
             foreach (var file in dirInfo.GetFiles())
             {
-                result.Add(ReadFile(file.FullName));
+                Result.Add(ReadFile(file.FullName));
             }
 
             foreach (var dir in dirInfo.GetDirectories())
             {
                 ReadDirectory(dir.FullName);
             }
-            return result;
+            return Result;
         }
 
         public byte[] ReadFile(string path)

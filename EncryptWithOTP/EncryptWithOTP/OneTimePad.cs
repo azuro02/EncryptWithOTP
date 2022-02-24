@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace EncryptWithOTP
 {
@@ -14,12 +11,18 @@ namespace EncryptWithOTP
         {
             BitArray dataBits = new BitArray(data);
 
-            var bytes = new byte[data.Length];
+            byte[] bytes = new byte[data.Length];
             using (var generator = RandomNumberGenerator.Create())
             {
                 generator.GetBytes(bytes); 
             }
             BitArray key = new BitArray(bytes);
+            
+            for(int i = 0; i < bytes.Length; i++)
+            {
+                bytes[i] = 0;
+            }
+            
             dataBits.Xor(key);
 
             //reset Data
@@ -32,12 +35,12 @@ namespace EncryptWithOTP
 
         public static BitArray Decrypt(OTPvalues pair)
         {
-            pair.cipherText.Xor(pair.key);
-            for (int i = 0; i < pair.key.Length; i++)
+            pair.CipherText.Xor(pair.Key);
+            for (int i = 0; i < pair.Key.Length; i++)
             {
-                pair.key[i] = false;
+                pair.Key[i] = false;
             }
-            return pair.cipherText;
+            return pair.CipherText;
         }
     }
 
@@ -45,13 +48,13 @@ namespace EncryptWithOTP
 
     struct OTPvalues
     {
-        public BitArray key { get; set; }
-        public BitArray cipherText { get; }
+        public BitArray? Key { get; set; }
+        public BitArray CipherText { get; }
 
         public OTPvalues(BitArray pKey, BitArray pCipherText)
         {
-            key = pKey;
-            cipherText = pCipherText;
+            Key = pKey;
+            CipherText = pCipherText;
         }
 
     }

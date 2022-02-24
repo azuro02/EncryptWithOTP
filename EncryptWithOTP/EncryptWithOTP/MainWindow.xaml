@@ -23,8 +23,8 @@
                 <RowDefinition Height="1.8*"/>
             </Grid.RowDefinitions>
 
-            <Button Name ="FileBtn" Grid.Row="1" Margin="8,20" BorderThickness="0" Background="#2666CF" Foreground="#F5F2E7" Content="select data" FontFamily="Arial" Click="FileBtn_Click" />
-            <Button Name ="KeyBtn" Grid.Row="2" Margin="8,20" BorderThickness="0" Background="#2666CF" Foreground="#F5F2E7" Content="select key" FontFamily="Arial" Click="KeyBtn_Click"/>
+            <Button Name ="FileBtn" Grid.Row="1" Margin="8,20" BorderThickness="0" Background="#2666CF" Foreground="#F5F2E7" Content="select data folder" FontFamily="Arial" Click="FileBtn_Click" />
+            <Button Name ="KeyBtn" Grid.Row="2" Margin="8,20" BorderThickness="0" Background="#2666CF" Foreground="#F5F2E7" Content="select key folder" FontFamily="Arial" Click="KeyBtn_Click"/>
             <Button Name ="KeyLocationBtn" Grid.Row="3" Margin="8,20" BorderThickness="0" Background="#2666CF" Foreground="#F5F2E7" Content="key destination" FontFamily="Arial" Click="KeyLocationBtn_Click"/>
         </Grid>
 
