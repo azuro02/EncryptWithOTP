@@ -66,3 +66,7 @@ D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\
 D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\Microsoft.WindowsAPICodePack.pdb
 D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\Microsoft.WindowsAPICodePack.Shell.pdb
 D:\Visual Studio 2019\C#\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.csproj.CopyComplete
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\Microsoft.WindowsAPICodePack.dll
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\Microsoft.WindowsAPICodePack.Shell.dll
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\bin\Debug\net6.0-windows\Microsoft.WindowsAPICodePack.ShellExtensions.dll
+C:\Users\david\SchuleUndCoden\VisualStudios\EncryptWithOTP\EncryptWithOTP\EncryptWithOTP\obj\Debug\net6.0-windows\EncryptWithOTP.csproj.CopyComplete

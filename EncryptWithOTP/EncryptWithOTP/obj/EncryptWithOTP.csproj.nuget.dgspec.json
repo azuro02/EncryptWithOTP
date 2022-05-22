@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Visual Studio 2019\\C#\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj": {}
+    "C:\\Users\\david\\SchuleUndCoden\\VisualStudios\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj": {}
   },
   "projects": {
-    "D:\\Visual Studio 2019\\C#\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj": {
+    "C:\\Users\\david\\SchuleUndCoden\\VisualStudios\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Visual Studio 2019\\C#\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj",
+        "projectUniqueName": "C:\\Users\\david\\SchuleUndCoden\\VisualStudios\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj",
         "projectName": "EncryptWithOTP",
-        "projectPath": "D:\\Visual Studio 2019\\C#\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj",
-        "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
-        "outputPath": "D:\\Visual Studio 2019\\C#\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\obj\\",
+        "projectPath": "C:\\Users\\david\\SchuleUndCoden\\VisualStudios\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj",
+        "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\david\\SchuleUndCoden\\VisualStudios\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +39,16 @@
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
+          "dependencies": {
+            "Microsoft.WindowsAPICodePack-Core": {
+              "target": "Package",
+              "version": "[1.1.0.2, )"
+            },
+            "Microsoft.WindowsAPICodePack-Shell": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

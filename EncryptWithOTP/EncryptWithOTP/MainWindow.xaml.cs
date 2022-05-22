@@ -11,8 +11,8 @@ namespace EncryptWithOTP
 {
     public partial class MainWindow : Window
     {
-        List<BitArray> encryptedBits = new List<BitArray>();
-        List<BitArray> keyBits = new List<BitArray>();
+        List<BitArray>? encryptedBits = new List<BitArray>(); //RAM Problem
+        List<BitArray>? keyBits = new List<BitArray>();       //RAM Problem
         int i = 0;
 
         string path = "";
@@ -122,8 +122,8 @@ namespace EncryptWithOTP
                     }
                     else
                     {
-                        List<byte[]> encrypted = new List<byte[]>();
-                        List<byte[]> key = new List<byte[]>();
+                        List<byte[]>? encrypted = new List<byte[]>();
+                        List<byte[]>? key = new List<byte[]>();
 
 
                         encrypted = read.ReadDirectory(path);
@@ -140,7 +140,7 @@ namespace EncryptWithOTP
                         ProgressBar.Visibility = Visibility.Hidden;
 
                         MessageBoxButton buttons2 = MessageBoxButton.YesNo;
-                        var result2 = MessageBox.Show("Delete Keys (recommended)?","delete", buttons2);
+                        var result2 = MessageBox.Show("Delete Keys (you might check your files)?","delete", buttons2);
                         if(result2 == MessageBoxResult.Yes)
                         {
                             DeleteKeys(keyPath);
@@ -148,6 +148,9 @@ namespace EncryptWithOTP
 
                         encrypted.Clear();
                         key.Clear();
+
+                        encrypted = null;
+                        key = null;
                     }
                 }
                 catch(Exception ex)
@@ -168,10 +171,12 @@ namespace EncryptWithOTP
             foreach (var file in dirInfo.GetFiles())
             {
                 //file.Delete();
-                Write.WriteFile(OneTimePad.Decrypt(new OTPvalues(keyBits[i], encryptedBits[i])), file.FullName);
+                Write.WriteFile(OneTimePad.Decrypt(new OTPvalues(keyBits[i], encryptedBits[i])), file.FullName); //Memory
                 i++;
                 var percentageComplete = (i * 100) / (count / 4);
                 progress.Report(percentageComplete);
+                keyBits[i] = null;
+                encryptedBits[i] = null;
             }
 
             foreach (var dir in dirInfo.GetDirectories())
@@ -339,28 +344,6 @@ namespace EncryptWithOTP
             return count;
         }
 
-        void Reset()
-        {
-            EncryptBtn.IsEnabled = false;
-            EncryptBtn.Foreground = Brushes.Black;
-            DecryptBtn.IsEnabled = false;
-            DecryptBtn.Foreground = Brushes.Black;
-            fileHere = false;
-            keyHere = false;
-            path = "";
-            keyPath = "";
-            i = 0;
-            KeyPanel.Visibility = Visibility.Hidden;
-            FilePanel.Visibility = Visibility.Hidden;
-            FilePathLbl.Content = "";
-            KeyPathLbl.Content = "";
-            ProgressBar.Visibility = Visibility.Hidden;
-            ProgressBar.Value = 0;
-            count = 0;
-            ProcessingLbl.Visibility = Visibility.Hidden;
-            keyDestinPath = "";
-        }
-
         private void FileBtn_Click(object sender, RoutedEventArgs e)
         {
             CommonOpenFileDialog ofd = new CommonOpenFileDialog();
@@ -427,6 +410,28 @@ namespace EncryptWithOTP
             {
                 keyDestinPath = ofd.FileName;
             }
+        }
+
+        void Reset()
+        {
+            EncryptBtn.IsEnabled = false;
+            EncryptBtn.Foreground = Brushes.Black;
+            DecryptBtn.IsEnabled = false;
+            DecryptBtn.Foreground = Brushes.Black;
+            fileHere = false;
+            keyHere = false;
+            path = "";
+            keyPath = "";
+            i = 0;
+            KeyPanel.Visibility = Visibility.Hidden;
+            FilePanel.Visibility = Visibility.Hidden;
+            FilePathLbl.Content = "";
+            KeyPathLbl.Content = "";
+            ProgressBar.Visibility = Visibility.Hidden;
+            ProgressBar.Value = 0;
+            count = 0;
+            ProcessingLbl.Visibility = Visibility.Hidden;
+            keyDestinPath = "";
         }
     }
 }

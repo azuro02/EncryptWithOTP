@@ -77,9 +77,7 @@ namespace EncryptWithOTP
                 {
                     currentKeyPath += "\\" + help[i];
                 }
-            }
-            
-            
+            }  
 
             DirectoryInfo keyDir = new DirectoryInfo(currentKeyPath);
             if (firstIteration)

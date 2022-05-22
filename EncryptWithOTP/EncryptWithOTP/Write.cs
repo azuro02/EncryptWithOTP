@@ -10,14 +10,15 @@ namespace EncryptWithOTP
         
         public static void WriteFile(BitArray data, string path)
         {
-            byte[] bytes = new byte[data.Length / 8];
+            byte[]? bytes = new byte[data.Length / 8];
             data.CopyTo(bytes, 0);
             File.WriteAllBytes(path, bytes);
+            bytes = null;
         }
 
         public static void WriteNewFile(BitArray data, string path)
         {
-            byte[] bytes = new byte[data.Length / 8];
+            byte[]? bytes = new byte[data.Length / 8];
             data.CopyTo(bytes, 0);
             string[] help = path.Split('\\');
 
@@ -30,6 +31,7 @@ namespace EncryptWithOTP
             newPath += help2[0] + "-encrypted-copy" + "." + help2[1];
 
             File.WriteAllBytes(newPath, bytes);
+            bytes = null;
         }
     }
 }

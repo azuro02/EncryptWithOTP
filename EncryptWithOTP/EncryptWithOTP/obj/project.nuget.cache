@@ -1,8 +1,32 @@
 {
   "version": 2,
-  "dgSpecHash": "zM/2ZMOQaE9o8/W8Ob25jrfzMbKxMfmpUqboS0GqbIy8ZKlF3xCdhuhB0JJLFLsbVkiZ3MiWgb4t7XdnrFZFcQ==",
+  "dgSpecHash": "ZMT40+cR0wdDZrQCZsCEmHBsv7okjZ6ll8S1B/L/hGp0JfcEoxxcDV30abL4gyWGuoc9MuHRof4r2aODizCLmQ==",
   "success": true,
-  "projectFilePath": "D:\\Visual Studio 2019\\C#\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj",
-  "expectedPackageFiles": [],
-  "logs": []
+  "projectFilePath": "C:\\Users\\david\\SchuleUndCoden\\VisualStudios\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\david\\.nuget\\packages\\microsoft.windowsapicodepack-core\\1.1.0.2\\microsoft.windowsapicodepack-core.1.1.0.2.nupkg.sha512",
+    "C:\\Users\\david\\.nuget\\packages\\microsoft.windowsapicodepack-shell\\1.1.0\\microsoft.windowsapicodepack-shell.1.1.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Das Paket \"Microsoft.WindowsAPICodePack-Core 1.1.0.2\" wurde nicht mit dem Projektzielframework \"net6.0-windows7.0\", sondern mit \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" wiederhergestellt. Dieses Paket ist mit Ihrem Projekt möglicherweise nicht vollständig kompatibel.",
+      "libraryId": "Microsoft.WindowsAPICodePack-Core",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Das Paket \"Microsoft.WindowsAPICodePack-Shell 1.1.0\" wurde nicht mit dem Projektzielframework \"net6.0-windows7.0\", sondern mit \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" wiederhergestellt. Dieses Paket ist mit Ihrem Projekt möglicherweise nicht vollständig kompatibel.",
+      "libraryId": "Microsoft.WindowsAPICodePack-Shell",
+      "targetGraphs": [
+        "net6.0-windows7.0"
+      ]
+    }
+  ]
 }
