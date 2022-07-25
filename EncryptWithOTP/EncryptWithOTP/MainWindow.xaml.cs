@@ -11,8 +11,8 @@ namespace EncryptWithOTP
 {
     public partial class MainWindow : Window
     {
-        List<BitArray>? encryptedBits = new List<BitArray>(); //RAM Problem
-        List<BitArray>? keyBits = new List<BitArray>();       //RAM Problem
+        List<bool[]> encryptedBits = new List<bool[]>();
+        List<bool[]> keyBits = new List<bool[]>();
         int i = 0;
 
         string path = "";
@@ -39,7 +39,7 @@ namespace EncryptWithOTP
             MessageBoxButton buttons = MessageBoxButton.YesNo;
 
             var result = MessageBox.Show("Are you sure you want to enycrypt this file(s)?", "encrypt", buttons);
-            if(result == MessageBoxResult.Yes)
+            if (result == MessageBoxResult.Yes)
             {
                 var progress = new Progress<int>(value =>
                 {
@@ -62,11 +62,11 @@ namespace EncryptWithOTP
                         await Task.Run(() => read.ReadAndEncryptFile(path, fileInfo.Name, fileInfo.Directory.FullName));
                     }
                 }
-                
-                if(read.FailedPaths.Count > 0)
+
+                if (read.FailedPaths.Count > 0)
                 {
                     string message = "";
-                    foreach(string path in read.FailedPaths)
+                    foreach (string path in read.FailedPaths)
                     {
                         message += path + ";";
                     }
@@ -104,8 +104,10 @@ namespace EncryptWithOTP
                             var encryptedFile = read.ReadFile(path);
                             var keyFile = read2.ReadFile(keyPath);
 
-                            BitArray fileBits = new BitArray(encryptedFile);
-                            BitArray keyFileBits = new BitArray(keyFile);
+                            bool[] fileBits = new bool[keyFile.Length * 8];
+                            bool[] keyFileBits = new bool[keyFile.Length * 8];
+                            fileBits = Converter.GetBools(encryptedFile);
+                            keyFileBits = Converter.GetBools(keyFile);
 
                             Write.WriteFile(OneTimePad.Decrypt(new OTPvalues(keyFileBits, fileBits)), file.FullName);
 
@@ -129,10 +131,17 @@ namespace EncryptWithOTP
                         encrypted = read.ReadDirectory(path);
                         key = read2.ReadDirectory(keyPath);
 
+
                         for (int i = 0; i < encrypted.Count; i++)
                         {
-                            encryptedBits.Add(new BitArray(encrypted[i]));
-                            keyBits.Add(new BitArray(key[i]));
+                            bool[] ke = new bool[key[i].Length * 8];
+                            ke = Converter.GetBools(key[i]);
+
+                            bool[] en = new bool[encrypted[i].Length * 8];
+                            en = Converter.GetBools(encrypted[i]);
+
+                            keyBits.Add(ke);
+                            encryptedBits.Add(en);
                         }
 
                         ProgressBar.Visibility = Visibility.Visible;
@@ -140,8 +149,8 @@ namespace EncryptWithOTP
                         ProgressBar.Visibility = Visibility.Hidden;
 
                         MessageBoxButton buttons2 = MessageBoxButton.YesNo;
-                        var result2 = MessageBox.Show("Delete Keys (you might check your files)?","delete", buttons2);
-                        if(result2 == MessageBoxResult.Yes)
+                        var result2 = MessageBox.Show("Delete Keys (you might check your files)?", "delete", buttons2);
+                        if (result2 == MessageBoxResult.Yes)
                         {
                             DeleteKeys(keyPath);
                         }
@@ -153,7 +162,7 @@ namespace EncryptWithOTP
                         key = null;
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("Probably wrong Folder or Wrong key!");
                     MessageBox.Show(ex.ToString());
@@ -406,7 +415,7 @@ namespace EncryptWithOTP
         {
             CommonOpenFileDialog ofd = new CommonOpenFileDialog();
             ofd.IsFolderPicker = true;
-            if(ofd.ShowDialog() == CommonFileDialogResult.Ok)
+            if (ofd.ShowDialog() == CommonFileDialogResult.Ok)
             {
                 keyDestinPath = ofd.FileName;
             }

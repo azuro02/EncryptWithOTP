@@ -13,6 +13,9 @@
       },
       "Microsoft.WindowsAPICodePack-Shell/1.1.0": {
         "type": "package",
+        "dependencies": {
+          "Microsoft.WindowsAPICodePack-Core": "1.1.0"
+        },
         "compile": {
           "lib/Microsoft.WindowsAPICodePack.Shell.dll": {},
           "lib/Microsoft.WindowsAPICodePack.ShellExtensions.dll": {}
@@ -64,19 +67,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\david\\.nuget\\packages\\": {}
+    "C:\\Users\\David\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\david\\SchuleUndCoden\\VisualStudios\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj",
+      "projectUniqueName": "D:\\Visual Studio 2019\\C#\\OTPFixed\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj",
       "projectName": "EncryptWithOTP",
-      "projectPath": "C:\\Users\\david\\SchuleUndCoden\\VisualStudios\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj",
-      "packagesPath": "C:\\Users\\david\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\david\\SchuleUndCoden\\VisualStudios\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP\\obj\\",
+      "projectPath": "D:\\Visual Studio 2019\\C#\\OTPFixed\\EncryptWithOTP\\EncryptWithOTP\\EncryptWithOTP.csproj",
+      "packagesPath": "C:\\Users\\David\\.nuget\\packages\\",
+      "outputPath": "D:\\Visual Studio 2019\\C#\\OTPFixed\\EncryptWithOTP\\EncryptWithOTP\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\david\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\David\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -129,7 +137,7 @@
             "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
       }
     }
   },

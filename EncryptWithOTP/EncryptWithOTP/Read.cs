@@ -7,7 +7,7 @@ namespace EncryptWithOTP
 {
     class Read
     {
-        public List<byte[]> Result {get; set; }
+        public List<byte[]> Result { get; set; }
 
         int folderIndex;
         bool firstIteration = true;
@@ -23,9 +23,29 @@ namespace EncryptWithOTP
             folderIndex = help.Length - 1;
         }
 
+        public List<byte[]> ReadLargeFile(string path)
+        {
+            List<byte[]> bytes = new List<byte[]>();
+
+            byte[] buffer = new byte[2147483591]; //MAX Items in one Array
+            using (FileStream fs = new FileStream(path, FileMode.Open))
+            {
+                for (int i = 0; i < fs.Length; i += 2147483591)
+                {
+                    fs.Read(buffer, i, 2147483591);
+                    bytes.Add(buffer);
+                }
+            }
+            return bytes;
+        }
+
+
         public byte[] ReadAndEncryptFile(string path, string name, string keyDirPath)
         {
+            List<byte[]> byteList = ReadLargeFile(path);
+
             var bytes = File.ReadAllBytes(path); //Read in File
+
 
             OTPvalues pair = OneTimePad.Encrypt(bytes);//Encrypt
 
@@ -40,9 +60,11 @@ namespace EncryptWithOTP
             catch
             {
                 FailedPaths.Add(path);
-                Write.WriteNewFile(pair.CipherText, path);
+                byte[] by = new byte[pair.CipherText.Length / 8];
+                by = Converter.GetBytes(pair.CipherText);
+                Write.WriteNewFile(by, path);
             }
-          
+
             return bytes;
         }
 
@@ -55,7 +77,7 @@ namespace EncryptWithOTP
             {
                 string[] help = path.Split('\\');
                 help[folderIndex] += "_keys";
-                
+
 
                 for (int i = 0; i < help.Length; i++)
                 {
@@ -77,7 +99,7 @@ namespace EncryptWithOTP
                 {
                     currentKeyPath += "\\" + help[i];
                 }
-            }  
+            }
 
             DirectoryInfo keyDir = new DirectoryInfo(currentKeyPath);
             if (firstIteration)
