@@ -27,27 +27,50 @@ namespace EncryptWithOTP
         {
             List<byte[]> bytes = new List<byte[]>();
 
-            byte[] buffer = new byte[2147483591]; //MAX Items in one Array
+            int maxArrayItems = 3000 / 8; //MAX Items in one Array (2147483591) / 8 so a bool array can include all data
+
             using (FileStream fs = new FileStream(path, FileMode.Open))
             {
-                for (int i = 0; i < fs.Length; i += 2147483591)
+                if(fs.Length < maxArrayItems)
                 {
-                    fs.Read(buffer, i, 2147483591);
-                    bytes.Add(buffer);
+                    byte[] buffer = new byte[fs.Length];
+                    for (int i = 0; i < fs.Length; i += maxArrayItems) //for-Schleife evt unnötig
+                    {
+                        fs.Read(buffer, i,(int)fs.Length); //Achtung Konvertierung Prüfen
+                        bytes.Add(buffer);
+                    }
+                }
+                else
+                {
+                    long remainingLength = fs.Length;
+                    byte[] buffer = new byte[maxArrayItems];
+                    for (int i = 0; i < fs.Length; i += maxArrayItems)
+                    {
+                        if(remainingLength > maxArrayItems)
+                        {
+                            buffer = new byte[maxArrayItems];
+                            fs.Read(buffer, 0, maxArrayItems);
+                            bytes.Add(buffer);
+                            remainingLength -= maxArrayItems;
+                        }
+                        else
+                        {
+                            buffer = new byte[(int)remainingLength];
+                            fs.Read(buffer, 0, (int)remainingLength); //Achtung Konvertierung Prüfen
+                            bytes.Add(buffer);
+                        }
+                    }
                 }
             }
             return bytes;
         }
 
 
-        public byte[] ReadAndEncryptFile(string path, string name, string keyDirPath)
+        public List<byte[]> ReadAndEncryptFile(string path, string name, string keyDirPath)
         {
             List<byte[]> byteList = ReadLargeFile(path);
 
-            var bytes = File.ReadAllBytes(path); //Read in File
-
-
-            OTPvalues pair = OneTimePad.Encrypt(bytes);//Encrypt
+            OTPvalues pair = OneTimePad.Encrypt(byteList);//Encrypt
 
             Write.WriteFile(pair.Key, keyDirPath + @"\" + name + "_key.txt");//Save Keys
 
@@ -60,12 +83,17 @@ namespace EncryptWithOTP
             catch
             {
                 FailedPaths.Add(path);
-                byte[] by = new byte[pair.CipherText.Length / 8];
-                by = Converter.GetBytes(pair.CipherText);
+                List<byte[]> by = new List<byte[]>();
+                for (int i = 0; i < pair.CipherText.Count; i++)
+                {
+                    by.Add(new byte[pair.CipherText[i].Length / 8]);
+                    by[i] = Converter.GetBytes(pair.CipherText[i]);
+                }
+                
                 Write.WriteNewFile(by, path);
             }
 
-            return bytes;
+            return byteList;
         }
 
         public void ReadAndEncryptDirectory(string path, IProgress<int> progress, int count, string keypath)

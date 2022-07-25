@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using System.Security.Cryptography;
 
 
@@ -7,41 +7,49 @@ namespace EncryptWithOTP
 {
     static class OneTimePad
     {
-        public static OTPvalues Encrypt(byte[] data)
+        public static OTPvalues Encrypt(List<byte[]> data)
         {
-            bool[] dataBits = new bool[data.Length * 8];//Error bei Dateien > 512mb
-            dataBits = Converter.GetBools(data);
+            List<bool[]> dataBits = new List<bool[]>();
+            List<byte[]> buffer = new List<byte[]>();
+            List<bool[]> key = new List<bool[]>();
 
-            byte[] bytes = new byte[data.Length];
-            using (var generator = RandomNumberGenerator.Create())
+            for (int i = 0; i < data.Count; i++)
             {
-                generator.GetBytes(bytes);
-            }
-            bool[] key = new bool[bytes.Length];
-            key = Converter.GetBools(bytes);
+                dataBits.Add(Converter.GetBools(data[i]));
 
-            for (int i = 0; i < bytes.Length; i++)
-            {
-                bytes[i] = 0;
-            }
+                using (var generator = RandomNumberGenerator.Create())
+                {
+                    buffer.Add(new byte[dataBits[i].Length / 8]);
+                    generator.GetBytes(buffer[i]);
+                }
+                key.Add(Converter.GetBools(buffer[i]));
 
-            dataBits = XOR(key, dataBits);
+                for (int j = 0; j < buffer[i].Length; j++)
+                {
+                    buffer[i][j] = 0;
+                }
 
-            //reset Data
-            for (int i = 0; i < data.Length; i++)
-            {
-                data[i] = 0;
+                dataBits[i] = XOR(key[i], dataBits[i]);
+
+                //reset Data
+                for (int k = 0; k < data[i].Length; k++)
+                {
+                    data[i][k] = 0;
+                }
             }
 
             return new OTPvalues(key, dataBits);
         }
 
-        public static bool[] Decrypt(OTPvalues pair)
+        public static List<bool[]> Decrypt(OTPvalues pair)
         {
-            pair.CipherText = XOR(pair.CipherText, pair.Key);
-            for (int i = 0; i < pair.Key.Length; i++)
+            for (int i = 0; i < pair.Key.Count; i++)
             {
-                pair.Key[i] = false;
+                pair.CipherText[i] = XOR(pair.CipherText[i], pair.Key[i]);
+                for (int j = 0; j < pair.Key[i].Length; j++)
+                {
+                    pair.Key[i][j] = false;
+                }
             }
             return pair.CipherText;
         }
@@ -60,10 +68,10 @@ namespace EncryptWithOTP
 
     struct OTPvalues
     {
-        public bool[] Key { get; set; }
-        public bool[] CipherText { get; set; }
+        public List<bool[]> Key { get; set; }
+        public List<bool[]> CipherText { get; set; }
 
-        public OTPvalues(bool[] pKey, bool[] pCipherText)
+        public OTPvalues(List<bool[]> pKey, List<bool[]> pCipherText)
         {
             Key = pKey;
             CipherText = pCipherText;

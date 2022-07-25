@@ -101,27 +101,38 @@ namespace EncryptWithOTP
                         await Task.Run(() =>
                         {
                             FileInfo file = new FileInfo(path);
-                            var encryptedFile = read.ReadFile(path);
-                            var keyFile = read2.ReadFile(keyPath);
 
-                            bool[] fileBits = new bool[keyFile.Length * 8];
-                            bool[] keyFileBits = new bool[keyFile.Length * 8];
-                            fileBits = Converter.GetBools(encryptedFile);
-                            keyFileBits = Converter.GetBools(keyFile);
+
+                            List<bool[]> fileBits = new List<bool[]>();
+                            List<bool[]> keyFileBits = new List<bool[]>();
+
+                            List<byte[]> encryptedFile = read.ReadLargeFile(path);
+                            List<byte[]> keyFile = read.ReadLargeFile(keyPath);
+
+
+                            for (int i = 0; i < encryptedFile.Count; i++)
+                            {
+                                fileBits.Add(new bool[keyFile[i].Length * 8]);
+                                keyFileBits.Add(new bool[keyFile[i].Length * 8]);
+
+                                fileBits[i] = Converter.GetBools(encryptedFile[i]);
+                                keyFileBits[i] = Converter.GetBools(keyFile[i]);
+                            }
 
                             Write.WriteFile(OneTimePad.Decrypt(new OTPvalues(keyFileBits, fileBits)), file.FullName);
-
                         });
-
-                        ProcessingLbl.Visibility = Visibility.Hidden;
-
-                        MessageBoxButton buttons2 = MessageBoxButton.YesNo;
-                        var result2 = MessageBox.Show("Delete Key (recommended)?", "delete", buttons2);
-                        if (result2 == MessageBoxResult.Yes)
-                        {
-                            File.Delete(keyPath);
-                        }
                     }
+                    
+
+                    ProcessingLbl.Visibility = Visibility.Hidden;
+
+                    MessageBoxButton buttons2 = MessageBoxButton.YesNo;
+                    var result2 = MessageBox.Show("Delete Key (recommended)?", "delete", buttons2);
+                    if (result2 == MessageBoxResult.Yes)
+                    {
+                        File.Delete(keyPath);
+                    }
+
                     else
                     {
                         List<byte[]>? encrypted = new List<byte[]>();
@@ -148,9 +159,9 @@ namespace EncryptWithOTP
                         await Task.Run(() => DecryptAndWrite(path, progress));
                         ProgressBar.Visibility = Visibility.Hidden;
 
-                        MessageBoxButton buttons2 = MessageBoxButton.YesNo;
-                        var result2 = MessageBox.Show("Delete Keys (you might check your files)?", "delete", buttons2);
-                        if (result2 == MessageBoxResult.Yes)
+                        MessageBoxButton buttons3 = MessageBoxButton.YesNo;
+                        var result3 = MessageBox.Show("Delete Keys (you might check your files)?", "delete", buttons3);
+                        if (result3 == MessageBoxResult.Yes)
                         {
                             DeleteKeys(keyPath);
                         }
@@ -179,8 +190,7 @@ namespace EncryptWithOTP
             DirectoryInfo dirInfo = new DirectoryInfo(path);
             foreach (var file in dirInfo.GetFiles())
             {
-                //file.Delete();
-                Write.WriteFile(OneTimePad.Decrypt(new OTPvalues(keyBits[i], encryptedBits[i])), file.FullName); //Memory
+                Write.WriteFile(OneTimePad.Decrypt(new OTPvalues(keyBits, encryptedBits)), file.FullName); //Memory
                 i++;
                 var percentageComplete = (i * 100) / (count / 4);
                 progress.Report(percentageComplete);
