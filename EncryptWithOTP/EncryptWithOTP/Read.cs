@@ -27,7 +27,7 @@ namespace EncryptWithOTP
         {
             List<byte[]> bytes = new List<byte[]>();
 
-            int maxArrayItems = 3000 / 8; //MAX Items in one Array (2147483591) / 8 so a bool array can include all data
+            int maxArrayItems = 2147483591 / 8; //MAX Items in one Array (2147483591) / 8 so a bool array can include all data
 
             using (FileStream fs = new FileStream(path, FileMode.Open))
             {

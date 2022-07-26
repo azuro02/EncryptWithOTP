@@ -26,7 +26,8 @@ namespace EncryptWithOTP
 
             for (int i = 1; i < dataList.Count; i++)
             {
-                dataByte.Add(new byte[dataList[0].Length / 8]);
+                dataByte.Add(new byte[dataList[i].Length / 8]);
+                dataByte[i] = Converter.GetBytes(dataList[i]);
                 AppendAllBytes(path, dataByte[i]);
             }
         }
