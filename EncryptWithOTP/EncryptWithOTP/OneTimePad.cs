@@ -24,20 +24,12 @@ namespace EncryptWithOTP
                 }
                 key.Add(Converter.GetBools(buffer[i]));
 
-                for (int j = 0; j < buffer[i].Length; j++)
-                {
-                    buffer[i][j] = 0;
-                }
-
                 dataBits[i] = XOR(key[i], dataBits[i]);
-
-                //reset Data
-                for (int k = 0; k < data[i].Length; k++)
-                {
-                    data[i][k] = 0;
-                }
             }
 
+            buffer = null;
+
+            data = null;
             return new OTPvalues(key, dataBits);
         }
 
@@ -62,6 +54,9 @@ namespace EncryptWithOTP
             {
                 ergebnis[i] = a[i] ^ b[i];
             }
+
+            a = null;
+            b = null;
             return ergebnis;
         }
     }

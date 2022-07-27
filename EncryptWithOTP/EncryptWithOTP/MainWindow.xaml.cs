@@ -74,6 +74,7 @@ namespace EncryptWithOTP
                     MessageBox.Show(read.FailedPaths.Count + " could not be overriden. Please delete these files manually:" + System.Environment.NewLine + message);
                 }
 
+                read.Dispose();
                 Reset();
             }
         }
@@ -102,7 +103,6 @@ namespace EncryptWithOTP
                         {
                             FileInfo file = new FileInfo(path);
 
-
                             List<bool[]> fileBits = new List<bool[]>();
                             List<bool[]> keyFileBits = new List<bool[]>();
 
@@ -120,6 +120,13 @@ namespace EncryptWithOTP
                             }
 
                             Write.WriteFile(OneTimePad.Decrypt(new OTPvalues(keyFileBits, fileBits)), file.FullName);
+
+                            fileBits = null;
+                            keyFileBits = null;
+                            encryptedFile = null;
+                            keyFile = null;
+
+                            GC.Collect();
                         });
                     }
                     
@@ -132,12 +139,10 @@ namespace EncryptWithOTP
                     {
                         File.Delete(keyPath);
                     }
-
                     else
                     {
                         List<byte[]>? encrypted = new List<byte[]>();
                         List<byte[]>? key = new List<byte[]>();
-
 
                         encrypted = read.ReadDirectory(path);
                         key = read2.ReadDirectory(keyPath);
@@ -166,11 +171,11 @@ namespace EncryptWithOTP
                             DeleteKeys(keyPath);
                         }
 
-                        encrypted.Clear();
-                        key.Clear();
-
                         encrypted = null;
                         key = null;
+
+                        read.Dispose();
+                        read2.Dispose();
                     }
                 }
                 catch (Exception ex)
@@ -179,8 +184,8 @@ namespace EncryptWithOTP
                     MessageBox.Show(ex.ToString());
                 }
 
-                encryptedBits.Clear();
-                keyBits.Clear();
+                keyBits = null;
+                encryptedBits = null;
                 Reset();
             }
         }
@@ -451,6 +456,11 @@ namespace EncryptWithOTP
             count = 0;
             ProcessingLbl.Visibility = Visibility.Hidden;
             keyDestinPath = "";
+
+            encryptedBits = null;
+            keyBits = null;
+
+            GC.Collect();
         }
     }
 }

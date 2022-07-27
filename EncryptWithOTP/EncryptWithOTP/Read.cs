@@ -5,7 +5,7 @@ using System.Windows;
 
 namespace EncryptWithOTP
 {
-    class Read
+    class Read : IDisposable
     {
         public List<byte[]> Result { get; set; }
 
@@ -65,7 +65,6 @@ namespace EncryptWithOTP
             return bytes;
         }
 
-
         public List<byte[]> ReadAndEncryptFile(string path, string name, string keyDirPath)
         {
             List<byte[]> byteList = ReadLargeFile(path);
@@ -92,7 +91,6 @@ namespace EncryptWithOTP
                 
                 Write.WriteNewFile(by, path);
             }
-
             return byteList;
         }
 
@@ -184,6 +182,12 @@ namespace EncryptWithOTP
         {
             var bytes = File.ReadAllBytes(path);
             return bytes;
+        }
+
+        public void Dispose()
+        {
+            Result = null;
+            FailedPaths = null;
         }
     }
 }

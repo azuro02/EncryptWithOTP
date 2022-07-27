@@ -9,16 +9,8 @@ namespace EncryptWithOTP
 {
     static class Write
     {
-        public static void WriteFile(bool[] data, string path)
-        {
-            byte[] dataByte = new byte[data.Length / 8];
-            dataByte = Converter.GetBytes(data);
-            File.WriteAllBytes(path, dataByte);
-        }
-
         public static void WriteFile(List<bool[]> dataList, string path)
         {
-           
             List<byte[]> dataByte = new List<byte[]>();
             dataByte.Add(new byte[dataList[0].Length / 8]);
             dataByte[0] = Converter.GetBytes(dataList[0]);
@@ -30,21 +22,9 @@ namespace EncryptWithOTP
                 dataByte[i] = Converter.GetBytes(dataList[i]);
                 AppendAllBytes(path, dataByte[i]);
             }
-        }
 
-        public static void WriteNewFile(byte[] data, string path)
-        {
-            string[] help = path.Split('\\');
-
-            string newPath = "";
-            for (int i = 0; i < help.Length - 1; i++)
-            {
-                newPath += help[i] + "\\";
-            }
-            string[] help2 = help[help.Length - 1].Split('.');
-            newPath += help2[0] + "-encrypted-copy" + "." + help2[1];
-
-            File.WriteAllBytes(newPath, data);
+            dataList = null;
+            dataByte = null;
         }
 
         public static void WriteNewFile(List<byte[]> byteList, string path)
@@ -65,6 +45,9 @@ namespace EncryptWithOTP
             {
                 AppendAllBytes(path, byteList[i]);
             }
+
+            //byteList.TrimExcess();
+            byteList = null;
         }
 
         public static void AppendAllBytes(string path, byte[] bytes)
@@ -80,6 +63,8 @@ namespace EncryptWithOTP
             {
                 MessageBox.Show(ex.ToString());
             }
+
+            bytes = null;
         }
     }
 }
